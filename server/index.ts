@@ -1,6 +1,7 @@
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
+import { getDevices, queryDevice } from "./routes/firemon";
 
 export function createServer() {
   const app = express();
@@ -16,6 +17,10 @@ export function createServer() {
   });
 
   app.get("/api/demo", handleDemo);
+
+  // FireMon API routes
+  app.get("/api/devices", getDevices);
+  app.post("/api/query", queryDevice);
 
   return app;
 }
