@@ -1,0 +1,175 @@
+{% extends "base.html" %} {% block content %}
+<div class="min-h-screen bg-background text-foreground">
+  <!-- Hero Section -->
+  <div class="relative overflow-hidden">
+    <div
+      class="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/20"
+    ></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16">
+      <div class="text-center max-w-4xl mx-auto">
+        <div
+          class="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-4 py-2 mb-8"
+        >
+          <i data-lucide="shield" class="w-4 h-4 text-primary"></i>
+          <span class="text-sm font-medium text-primary"
+            >FireMon Security Intelligence</span
+          >
+        </div>
+
+        <h1
+          class="text-5xl sm:text-6xl lg:text-7xl font-bold tracking-tight mb-6"
+        >
+          <span class="block">Analyze</span>
+          <span
+            class="block bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent"
+          >
+            Firewall Rules
+          </span>
+          <span class="block">Intelligently</span>
+        </h1>
+
+        <p
+          class="text-xl text-muted-foreground mb-12 max-w-2xl mx-auto leading-relaxed"
+        >
+          Query your FireMon environment with natural language. Find security
+          gaps, unused rules, and compliance violations across all your devices.
+        </p>
+
+        <!-- Search Interface -->
+        <div class="max-w-2xl mx-auto mb-16">
+          <div class="relative group">
+            <div
+              class="absolute inset-0 bg-gradient-to-r from-primary/50 to-primary/30 rounded-2xl blur-xl opacity-75 group-hover:opacity-100 transition-opacity"
+            ></div>
+            <div
+              class="relative bg-card border border-border rounded-2xl p-6 shadow-2xl"
+            >
+              <form action="/devices" method="GET" class="flex gap-3">
+                <div class="relative flex-1">
+                  <i
+                    data-lucide="search"
+                    class="absolute left-4 top-1/2 transform -translate-y-1/2 text-muted-foreground w-5 h-5"
+                  ></i>
+                  <input
+                    type="text"
+                    name="query"
+                    id="queryInput"
+                    placeholder="Describe what you want to find..."
+                    class="w-full pl-12 pr-4 py-4 text-lg border-0 bg-transparent focus:outline-none focus:ring-2 focus:ring-primary/50 rounded-lg"
+                    required
+                  />
+                </div>
+                <button
+                  type="submit"
+                  class="px-8 py-4 text-lg font-semibold bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg transition-colors disabled:opacity-50"
+                  id="analyzeBtn"
+                  disabled
+                >
+                  Analyze
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+
+        <!-- Predefined Queries -->
+        <div class="max-w-4xl mx-auto">
+          <h3 class="text-lg font-semibold mb-6 text-muted-foreground">
+            Try these common queries:
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <button
+              class="predefined-query text-left p-4 rounded-xl border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-200 group"
+              data-query="Show all firewall rules where source, destination, and service are set to 'Any' and the action is 'ACCEPT'"
+            >
+              <p
+                class="text-sm text-foreground group-hover:text-primary transition-colors"
+              >
+                Show all firewall rules where source, destination, and service
+                are set to 'Any' and the action is 'ACCEPT'
+              </p>
+            </button>
+
+            <button
+              class="predefined-query text-left p-4 rounded-xl border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-200 group"
+              data-query="List all enabled firewall rules that haven't been used in the last 90 days or were never used"
+            >
+              <p
+                class="text-sm text-foreground group-hover:text-primary transition-colors"
+              >
+                List all enabled firewall rules that haven't been used in the
+                last 90 days or were never used
+              </p>
+            </button>
+
+            <button
+              class="predefined-query text-left p-4 rounded-xl border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-200 group"
+              data-query="Find rules that failed the PCI-DSS v4 assessment with severity 8 or higher"
+            >
+              <p
+                class="text-sm text-foreground group-hover:text-primary transition-colors"
+              >
+                Find rules that failed the PCI-DSS v4 assessment with severity 8
+                or higher
+              </p>
+            </button>
+
+            <button
+              class="predefined-query text-left p-4 rounded-xl border border-border hover:border-primary/50 hover:bg-primary/5 transition-all duration-200 group"
+              data-query="Identify rules marked as redundant or shadowed in the firewall policy"
+            >
+              <p
+                class="text-sm text-foreground group-hover:text-primary transition-colors"
+              >
+                Identify rules marked as redundant or shadowed in the firewall
+                policy
+              </p>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div class="text-center group">
+        <div
+          class="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-4 group-hover:bg-primary/20 transition-colors"
+        >
+          <i data-lucide="zap" class="w-8 h-8 text-primary"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Lightning Fast</h3>
+        <p class="text-muted-foreground">
+          Query hundreds of devices and thousands of rules in seconds
+        </p>
+      </div>
+
+      <div class="text-center group">
+        <div
+          class="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-4 group-hover:bg-primary/20 transition-colors"
+        >
+          <i data-lucide="shield" class="w-8 h-8 text-primary"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Security Focused</h3>
+        <p class="text-muted-foreground">
+          Identify vulnerabilities and compliance issues automatically
+        </p>
+      </div>
+
+      <div class="text-center group">
+        <div
+          class="inline-flex items-center justify-center w-16 h-16 bg-primary/10 rounded-2xl mb-4 group-hover:bg-primary/20 transition-colors"
+        >
+          <i data-lucide="bar-chart-3" class="w-8 h-8 text-primary"></i>
+        </div>
+        <h3 class="text-xl font-semibold mb-2">Detailed Analytics</h3>
+        <p class="text-muted-foreground">
+          Comprehensive reports and insights for better decision making
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
